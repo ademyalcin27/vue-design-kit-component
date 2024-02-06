@@ -1,0 +1,28 @@
+.input-wrapper {
+  @apply w-full;
+  &__label {
+    @apply mb-2 block text-sm font-medium leading-6 text-gray-600;
+  }
+  &__input {
+    @apply block w-full rounded-md border-0 px-2 
+    py-1.5 text-gray-900 shadow-sm ring-1 
+    ring-inset ring-gray-300 placeholder:text-gray-400
+    focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm
+    sm:leading-6;
+    &--clearable {
+      @apply pr-8;
+    }
+    &--error {
+      @apply ring-red-600;
+    }
+  }
+  &__clear {
+    @apply absolute inset-y-0 right-0 top-1/2 -translate-y-1/2 transform cursor-pointer items-center p-2;
+  }
+  &__error-message {
+    @apply mt-2 text-sm text-red-600;
+  }
+  :has(:disabled) :is(&__input) {
+    @apply pointer-events-none  text-gray-400;
+  }
+}
