@@ -1,10 +1,12 @@
 <template>
   <div class="input-wrapper">
-    <label :for="id" class="input-wrapper__label" v-if="label">{{ label }}</label>
+    <label v-if="label" :for="id" class="input-wrapper__label">{{
+      label
+    }}</label>
     <div class="relative flex">
       <input
-        v-model="modelValue"
         :id="id"
+        v-model="modelValue"
         :type="type"
         class="input-wrapper__input"
         :class="{
@@ -56,10 +58,10 @@ const props = withDefaults(defineProps<InputProps>(), {
 });
 const emit = defineEmits(["update:modelValue"]);
 
-const modelValue = defineModel<{ modelValue: InputHTMLAttributes["value"] }>();
+const modelValue = defineModel<string | number>();
 
 const showClearable = computed(
-  () => props.clearable && modelValue.value && !props.disabled
+  () => props.clearable && modelValue.value && !props.disabled,
 );
 function clearInput() {
   if (!props.clearable) return;
