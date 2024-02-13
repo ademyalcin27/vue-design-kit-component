@@ -1,12 +1,15 @@
 <template>
   <div>
-    <Input v-model="name" label="name" error-message="Error" error />
+    <Input
+      v-model="name"
+      label="name"
+      error-message="Error"
+      prepend-icon="fa-user"
+      clearable
+      disabled
+    />
   </div>
 </template>
 <script setup lang="ts">
-const name = ref("asdasd");
-
-watch(name, (newVal, oldVal) => {
-  console.log(newVal, oldVal);
-});
+const name = ref("izle ve öğren");
 </script>

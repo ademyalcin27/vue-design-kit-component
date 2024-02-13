@@ -3,25 +3,41 @@
     <label v-if="label" :for="id" class="input-wrapper__label">{{
       label
     }}</label>
-    <div class="relative flex">
+    <div
+      class="input-wrapper__field"
+      :class="{
+        'input-wrapper__field--error': error,
+      }"
+    >
+      <slot name="prepend" />
+      <font-awesome-icon
+        v-if="prependIcon && !$slots.prepend"
+        :icon="prependIcon"
+        class="input-wrapper__prepend-icon"
+      />
       <input
         :id="id"
         v-model="modelValue"
         :type="type"
         class="input-wrapper__input"
-        :class="{
-          'input-wrapper__input--clearable': showClearable,
-          'input-wrapper__input--error': error,
-        }"
         :placeholder="placeholder"
         :disabled="disabled"
         :readonly="readonly"
+        @blur="$emit('blur', $event)"
+        @focus="$emit('focus', $event)"
+        @input="$emit('input', $event)"
       />
       <font-awesome-icon
         v-if="showClearable"
         icon="fa-xmark"
         class="input-wrapper__clear"
         @click="clearInput"
+      />
+      <slot name="append" />
+      <font-awesome-icon
+        v-if="appendIcon && !$slots.append"
+        :icon="appendIcon"
+        class="input-wrapper__append-icon"
       />
     </div>
     <span v-if="errorMessages" class="input-wrapper__error-message">
@@ -47,6 +63,8 @@ interface InputProps {
   clearable?: boolean;
   errorMessage?: string;
   error?: boolean;
+  prependIcon?: string;
+  appendIcon?: string;
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
@@ -55,8 +73,15 @@ const props = withDefaults(defineProps<InputProps>(), {
   type: "text",
   placeholder: "",
   errorMessage: "",
+  prependIcon: "",
+  appendIcon: "",
 });
-const emit = defineEmits(["update:modelValue"]);
+defineEmits<{
+  (e: "update:modelValue", value: string): void;
+  (e: "input", event: Event): void;
+  (e: "blur", event: FocusEvent): void;
+  (e: "focus", event: FocusEvent): void;
+}>();
 
 const modelValue = defineModel<string | number>();
 
