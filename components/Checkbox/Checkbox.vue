@@ -12,10 +12,12 @@
         @input="$emit('input', $event)"
         @change="$emit('change', $event)"
       />
-      <div class="checkbox-wrapper__checkmark">
-        <font-awesome-icon icon="fa-check" class="checkbox-wrapper__icon" />
-      </div>
       <label :for="id" class="checkbox-wrapper__label">
+        <slot name="checkmark">
+          <div class="checkbox-wrapper__checkmark">
+            <font-awesome-icon icon="fa-check" class="checkbox-wrapper__icon" />
+          </div>
+        </slot>
         <slot>
           {{ label }}
         </slot>
@@ -36,7 +38,7 @@ interface CheckboxProps {
   error?: boolean;
   errorMessage?: string;
 }
-withDefaults(defineProps<CheckboxProps>(), {
+const props = withDefaults(defineProps<CheckboxProps>(), {
   name: "checkbox-" + self.crypto.randomUUID(),
   label: "",
   errorMessage: "",
@@ -48,7 +50,20 @@ defineEmits<{
 }>();
 
 const id = self.crypto.randomUUID();
-const modelValue = defineModel<T>();
+const modelValue = defineModel<T>({
+  get(value) {
+    if (Array.isArray(value)) {
+      return value;
+    }
+    return props.value === value;
+  },
+  set(value) {
+    if (typeof props.value === "boolean" || Array.isArray(modelValue.value)) {
+      return value;
+    }
+    return value ? props.value : "";
+  },
+});
 </script>
 
 <style scoped>
