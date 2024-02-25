@@ -29,6 +29,18 @@
       error-message="Error"
     />
   </div>
+  <div>
+    <h2>Colors</h2>
+    <RadioInput
+      v-for="color in colors"
+      :key="color"
+      v-model="selectedColor"
+      name="color"
+      :value="color"
+      :label="color"
+      error-message="Error"
+    />
+  </div>
 </template>
 <script setup lang="ts">
 const name = ref("izle ve öğren");
@@ -36,4 +48,7 @@ const name = ref("izle ve öğren");
 const team = ref("Galatasaray");
 const toggle = ref(false);
 const teamArray = ref(["Galatasaray", "Fenerbahçe", "Beşiktaş"]);
+
+const colors = ref(["red", "green", "blue"]);
+const selectedColor = ref();
 </script>
