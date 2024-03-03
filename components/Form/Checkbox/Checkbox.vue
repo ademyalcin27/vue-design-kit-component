@@ -12,8 +12,9 @@
         @input="$emit('input', $event)"
         @change="$emit('change', $event)"
       />
-      <label :for="id" class="checkbox-wrapper__label">
-        <slot name="checkmark">
+
+      <FormLabel :id="id" :label="label" class="cursor-pointer">
+        <slot name="checkmark" :checked="modelValue">
           <div class="checkbox-wrapper__checkmark">
             <font-awesome-icon icon="fa-check" class="checkbox-wrapper__icon" />
           </div>
@@ -21,7 +22,7 @@
         <slot>
           {{ label }}
         </slot>
-      </label>
+      </FormLabel>
     </div>
     <div v-if="errorMessage" class="checkbox-wrapper__error-message">
       {{ errorMessage }}
@@ -55,11 +56,15 @@ const modelValue = defineModel<T>({
     if (Array.isArray(value)) {
       return value;
     }
+
     return props.value === value;
   },
   set(value) {
-    if (typeof props.value === "boolean" || Array.isArray(modelValue.value)) {
+    if (Array.isArray(modelValue.value)) {
       return value;
+    }
+    if (typeof props.value === "boolean") {
+      return value === props.value;
     }
     return value ? props.value : "";
   },
@@ -67,5 +72,5 @@ const modelValue = defineModel<T>({
 </script>
 
 <style scoped>
-@import url("@/components/Checkbox/checkbox.css");
+@import url("./checkbox.css");
 </style>

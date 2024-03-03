@@ -1,20 +1,20 @@
 <template>
   <div class="toggle-wrapper" :class="{ 'toggle-wrapper--error': error }">
-    <Checkbox
+    <FormCheckbox
       v-model="modelValue"
       :value="value"
       :name="name"
       :disabled="disabled"
       :error-message="errorMessage"
     >
-      <template #checkmark>
+      <template #checkmark="{ checked }">
         <div
           class="toggle-wrapper__checkmark"
-          :class="{ 'toggle-wrapper__checkmark--checked': modelValue }"
+          :class="{ 'toggle-wrapper__checkmark--checked': checked }"
         />
-        <span class="toggle-wrapper__label"><slot />{{ label }}</span>
+        <slot>{{ label }}</slot>
       </template>
-    </Checkbox>
+    </FormCheckbox>
   </div>
 </template>
 
@@ -32,5 +32,5 @@ const modelValue = defineModel<boolean>();
 </script>
 
 <style scoped>
-@import url("@/components/Toggle/toggle.css");
+@import url("./toggle.css");
 </style>

@@ -1,54 +1,21 @@
 <template>
-  <!-- <div>
-    <Input
-      v-model="name"
-      label="name"
-      error-message="Error"
-      prepend-icon="fa-user"
-      clearable
-      disabled
-    />
-  </div> -->
-  <div>
-    <!-- <Checkbox v-model="team" label="Galatasaray" value="Galatasaray" /> -->
-    <!-- <Checkbox
-      v-model="teamArray"
-      label="Fenerbahçe"
-      value="Fenerbahçe"
-      error-message="Şampiyon olacak"
-    />
-    <Checkbox v-model="teamArray" label="Beşiktaş" value="Beşiktaş" error />
-    <Checkbox v-model="teamArray" label="24" :value="24" disabled /> -->
-    {{ toggle }}
-    <Toggle
-      v-model="toggle"
-      label="Toggle Item"
-      :value="true"
-      error
-      disabled
-      error-message="Error"
-    />
-  </div>
-  <div>
-    <h2>Colors</h2>
-    <RadioInput
-      v-for="color in colors"
-      :key="color"
-      v-model="selectedColor"
-      name="color"
-      :value="color"
-      :label="color"
-      error-message="Error"
-    />
+  <div class="wrapper">
+    <h2 class="wrapper__section-title">Input Components</h2>
+    <PreviewInput />
+    <h2 class="wrapper__section-title">Checkbox Components</h2>
+    <PreviewCheckbox />
+    <h2 class="wrapper__section-title">Toggle Components</h2>
+    <PreviewToggle />
+    <h2 class="wrapper__section-title">Radio Components</h2>
+    <PreviewRadio />
   </div>
 </template>
-<script setup lang="ts">
-const name = ref("izle ve öğren");
-
-const team = ref("Galatasaray");
-const toggle = ref(false);
-const teamArray = ref(["Galatasaray", "Fenerbahçe", "Beşiktaş"]);
-
-const colors = ref(["red", "green", "blue"]);
-const selectedColor = ref();
-</script>
+<script setup lang="ts"></script>
+<style scoped>
+.wrapper {
+  @apply flex flex-col p-5;
+  &__section-title {
+    @apply mb-4 text-2xl font-semibold text-indigo-600;
+  }
+}
+</style>

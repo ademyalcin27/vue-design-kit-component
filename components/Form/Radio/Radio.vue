@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="radio-input-wrapper"
-    :class="{ 'radio-input-wrapper--error': error }"
-  >
+  <div class="radio-wrapper" :class="{ 'radio-wrapper--error': error }">
     <input
       :id="id"
       v-model="modelValue"
@@ -10,19 +7,19 @@
       :name="name"
       :value="value"
       :disabled="disabled"
-      class="radio-input-wrapper__input"
+      class="radio-wrapper__input"
     />
-    <label :for="id" class="radio-input-wrapper__label">
+    <FormLabel :id="id">
       <slot>{{ label }}</slot>
-    </label>
-    <div v-if="errorMessage" class="radio-input-wrapper__error-message">
+    </FormLabel>
+    <div v-if="errorMessage" class="radio-wrapper__error-message">
       {{ errorMessage }}
     </div>
   </div>
 </template>
 
 <script setup lang="ts" generic="T">
-interface RadioInputProps {
+interface RadioProps {
   name: string;
   value: string | number | boolean | null | undefined;
   label?: string;
@@ -30,11 +27,11 @@ interface RadioInputProps {
   errorMessage?: string;
   disabled?: boolean;
 }
-defineProps<RadioInputProps>();
+defineProps<RadioProps>();
 const id = self.crypto.randomUUID();
 const modelValue = defineModel<T>();
 </script>
 
 <style scoped>
-@import url("@/components/RadioInput/radio-input.css");
+@import url("./radio.css");
 </style>

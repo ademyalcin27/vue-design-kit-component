@@ -1,8 +1,6 @@
 .input-wrapper {
   @apply w-full;
-  &__label {
-    @apply mb-2 block text-sm font-medium leading-6 text-gray-600;
-  }
+
   &__field {
     @apply relative flex items-center rounded-md ring-2 ring-inset ring-gray-300 hover:ring-2 focus:ring-2;
     &--error {
@@ -25,7 +23,7 @@
   &__error-message {
     @apply mt-2 text-sm text-red-600;
   }
-  :has(:disabled) :is(&__input) {
-    @apply pointer-events-none  text-gray-400;
+  &:has(input:disabled, input:read-only) &__input {
+    @apply pointer-events-none text-gray-400;
   }
 }

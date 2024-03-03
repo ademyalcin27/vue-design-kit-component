@@ -1,8 +1,10 @@
 <template>
   <div class="input-wrapper">
-    <label v-if="label" :for="id" class="input-wrapper__label">{{
-      label
-    }}</label>
+    <FormLabel :id="id" :error="error">
+      <slot name="label">
+        {{ label }}
+      </slot>
+    </FormLabel>
     <div
       class="input-wrapper__field"
       :class="{
@@ -19,6 +21,7 @@
         :id="id"
         v-model="modelValue"
         :type="type"
+        :name="name"
         class="input-wrapper__input"
         :placeholder="placeholder"
         :disabled="disabled"
@@ -54,7 +57,6 @@ type InputTypes = Extract<
   "text" | "number" | "email" | "password" | "tel" | "url"
 >;
 interface InputProps {
-  id?: string;
   label?: string;
   type?: InputTypes;
   placeholder?: string;
@@ -68,7 +70,6 @@ interface InputProps {
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
-  id: self.crypto.randomUUID(),
   label: "",
   type: "text",
   placeholder: "",
@@ -85,6 +86,9 @@ defineEmits<{
 
 const modelValue = defineModel<string | number>();
 
+const id = self.crypto.randomUUID();
+const name = self.crypto.randomUUID();
+
 const showClearable = computed(
   () => props.clearable && modelValue.value && !props.disabled,
 );
@@ -95,5 +99,5 @@ function clearInput() {
 </script>
 
 <style scoped>
-@import url("@/components/Input/Input.css");
+@import url("./input.css");
 </style>
