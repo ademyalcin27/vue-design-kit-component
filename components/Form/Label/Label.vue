@@ -13,6 +13,6 @@ defineProps<LabelProps>();
 
 <style scoped>
 .label-wrapper {
-  @apply flex items-center text-sm font-medium leading-6 text-gray-600;
+  @apply text-c-title-foreground flex items-center text-sm font-medium leading-6;
 }
 </style>

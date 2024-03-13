@@ -1,30 +1,33 @@
 .radio-wrapper {
   @apply flex flex-wrap items-center;
   &__input {
-    @apply relative mr-2 h-4 w-4 appearance-none rounded-full border-2 border-gray-300;
+    @apply border-c-ring relative mr-2 h-4 w-4 appearance-none rounded-full border-2;
     &:after {
-      @apply absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 transform
-      rounded-full bg-white content-[''];
+      @apply absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2
+      transform rounded-full content-[''];
     }
     &:checked {
-      @apply border-transparent bg-indigo-600 focus:ring-1 focus:ring-indigo-500 focus:ring-offset-1;
+      @apply focus:ring-c-primary-foreground focus:ring-1 focus:ring-offset-1;
+      &:after {
+        @apply bg-c-ring;
+      }
     }
     &:disabled {
       @apply cursor-not-allowed opacity-50;
     }
   }
   &:has(input:disabled) &__label {
-    @apply text-gray-400;
+    @apply text-c-input;
   }
   &--error & {
     &__input {
-      @apply border-red-600 bg-transparent focus:ring-transparent;
+      @apply border-c-destructive bg-transparent focus:ring-transparent;
       &:checked {
-        @apply bg-red-600;
+        @apply bg-c-destructive;
       }
     }
   }
   &__error-message {
-    @apply basis-full text-sm text-red-600;
+    @apply text-c-destructive basis-full text-sm;
   }
 }

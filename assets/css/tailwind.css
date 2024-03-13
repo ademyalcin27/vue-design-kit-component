@@ -1,3 +1,97 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body {
+  @apply text-c-foreground;
+}
+
+@layer base {
+  :root {
+    --color-background: 0 0% 100%;
+    --color-foreground: 224 71.4% 4.1%;
+
+    --color-title: 0 0% 100%;
+    --color-title-foreground: 224 71.4% 4.1%;
+
+    --color-primary: 262.1 83.3% 57.8%;
+    --color-primary-foreground: 210 20% 98%;
+
+    --color-muted: 220 14.3% 95.9%;
+    --color-muted-foreground: 220 8.9% 46.1%;
+
+    --color-destructive: 0 84.2% 60.2%;
+    --color-destructive-foreground: 210 20% 98%;
+
+    --color-border: 220 13% 91%;
+    --color-input: 220 13% 91%;
+    --color-ring: 262.1 83.3% 57.8%;
+    --color-radius: 0.5rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-background: 224 71.4% 4.1%;
+      --color-foreground: 210 20% 98%;
+
+      --color-title: 224 71.4% 4.1%;
+      --color-title-foreground: 210 20% 98%;
+
+      --color-primary: 263.4 70% 50.4%;
+      --color-primary-foreground: 210 20% 98%;
+
+      --color-muted: 215 27.9% 16.9%;
+      --color-muted-foreground: 217.9 10.6% 64.9%;
+
+      --color-destructive: 0 62.8% 30.6%;
+      --color-destructive-foreground: 210 20% 98%;
+
+      --color-border: 215 27.9% 16.9%;
+      --color-input: 215 27.9% 16.9%;
+      --color-ring: 263.4 70% 50.4%;
+    }
+  }
+  :root[data-theme="dark"] {
+    --color-background: 224 71.4% 4.1%;
+    --color-foreground: 210 20% 98%;
+
+    --color-title: 224 71.4% 4.1%;
+    --color-title-foreground: 210 20% 98%;
+
+    --color-primary: 263.4 70% 50.4%;
+    --color-primary-foreground: 210 20% 98%;
+
+    --color-muted: 215 27.9% 16.9%;
+    --color-muted-foreground: 217.9 10.6% 64.9%;
+
+    --color-destructive: 0 62.8% 30.6%;
+    --color-destructive-foreground: 210 20% 98%;
+
+    --color-border: 215 27.9% 16.9%;
+    --color-input: 215 27.9% 16.9%;
+    --color-ring: 263.4 70% 50.4%;
+  }
+  :root[data-theme="light"] {
+    --color-background: 0 0% 100%;
+    --color-foreground: 224 71.4% 4.1%;
+
+    --color-title: 0 0% 100%;
+    --color-title-foreground: 224 71.4% 4.1%;
+
+    --color-primary: 262.1 83.3% 57.8%;
+    --color-primary-foreground: 210 20% 98%;
+
+    --color-muted: 220 14.3% 95.9%;
+    --color-muted-foreground: 220 8.9% 46.1%;
+
+    --color-destructive: 0 84.2% 60.2%;
+    --color-destructive-foreground: 210 20% 98%;
+
+    --color-border: 220 13% 91%;
+    --color-input: 220 13% 91%;
+    --color-ring: 262.1 83.3% 57.8%;
+    --color-radius: 0.5rem;
+  }
+}
+
+body {
+  @apply bg-c-background;
+}

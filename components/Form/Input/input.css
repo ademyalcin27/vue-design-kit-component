@@ -2,16 +2,16 @@
   @apply w-full;
 
   &__field {
-    @apply relative flex items-center rounded-md ring-2 ring-inset ring-gray-300 hover:ring-2 focus:ring-2;
+    @apply ring-c-ring relative flex items-center rounded-md ring-2 ring-inset hover:ring-2 focus:ring-2;
     &--error {
-      @apply ring-red-600;
+      @apply ring-c-destructive;
     }
     &:not(&--error) {
-      @apply focus-within:ring-indigo-600;
+      @apply focus-within:ring-c-ring;
     }
   }
   &__input {
-    @apply block w-full border-0 bg-transparent px-2 py-1.5 text-gray-900 outline-none placeholder:text-gray-400 sm:text-sm sm:leading-6;
+    @apply text-c-foreground placeholder:text-c-muted-foreground block w-full border-0 bg-transparent px-2 py-1.5 outline-none sm:text-sm sm:leading-6;
   }
   &__prepend-icon {
     @apply pl-2;
@@ -21,9 +21,9 @@
     @apply mr-2;
   }
   &__error-message {
-    @apply mt-2 text-sm text-red-600;
+    @apply text-c-destructive mt-2 text-sm;
   }
   &:has(input:disabled, input:read-only) &__input {
-    @apply pointer-events-none text-gray-400;
+    @apply text-c-muted-foreground pointer-events-none;
   }
 }
