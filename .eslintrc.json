@@ -10,5 +10,7 @@
   },
   "extends": ["@nuxt/eslint-config", "plugin:prettier/recommended"],
   "plugins": [],
-  "rules": {}
+  "rules": {
+    "vue/require-default-prop": 0
+  }
 }

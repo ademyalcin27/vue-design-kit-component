@@ -1,11 +1,13 @@
 <template>
   <div class="wrapper">
     <button
-      class="text-c-primary-foreground bg-c-primary w-max justify-center rounded-md p-2"
+      class="w-max justify-center rounded-md bg-c-primary p-2 text-c-primary-foreground"
       @click="toggleTheme"
     >
       Theme Toggle
     </button>
+    <h2 class="wrapper__section-title">Button Components</h2>
+    <PreviewButton />
     <h2 class="wrapper__section-title">Input Components</h2>
     <PreviewInput />
     <h2 class="wrapper__section-title">Checkbox Components</h2>
@@ -27,7 +29,7 @@ onMounted(() => {
 .wrapper {
   @apply flex flex-col p-5;
   &__section-title {
-    @apply text-c-primary mb-4 text-2xl font-semibold;
+    @apply mb-4 text-2xl font-semibold text-c-primary;
   }
 }
 </style>

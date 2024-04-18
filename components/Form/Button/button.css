@@ -1,0 +1,39 @@
+.button-wrapper {
+  @apply flex items-center justify-center gap-2 rounded-lg border border-transparent;
+  &--small {
+    @apply px-2 py-1 text-sm;
+  }
+  &--medium {
+    @apply px-4 py-2 text-base;
+  }
+  &--large {
+    @apply px-6 py-3 text-lg;
+  }
+  &--primary {
+    @apply bg-c-primary text-c-primary-foreground hover:bg-c-primary/90;
+    &.button-wrapper--text {
+      @apply bg-transparent text-c-primary hover:text-c-primary/90;
+    }
+    &.button-wrapper--outlined {
+      @apply border-c-primary bg-transparent text-c-primary hover:text-c-primary/90;
+    }
+  }
+  &--red {
+    @apply bg-c-destructive text-c-primary-foreground hover:bg-c-destructive/90;
+    &.button-wrapper--text {
+      @apply bg-transparent text-c-destructive hover:text-c-destructive/90;
+    }
+    &.button-wrapper--outlined {
+      @apply border-c-destructive bg-transparent text-c-destructive hover:text-c-destructive/90;
+    }
+  }
+  &:disabled {
+    @apply cursor-not-allowed border-transparent bg-c-muted-foreground/50 text-c-title/80;
+    &.button-wrapper--text {
+      @apply bg-transparent text-c-title-foreground/40;
+    }
+    &.button-wrapper--outlined {
+      @apply border-c-title-foreground/40 bg-transparent text-c-title-foreground/40;
+    }
+  }
+}
