@@ -63,6 +63,20 @@
         <FormButton label="Outlined" loading variant="outlined" color="red" />
       </div>
     </PreviewItem>
+    <PreviewItem title="Link">
+      <div class="flex items-baseline gap-2">
+        <FormButton label="Link" is-link to="https://www.google.com" external />
+        <FormButton
+          label="Link"
+          is-link
+          to="https://www.google.com"
+          external
+          target="_blank"
+        />
+        <FormButton label="Link" is-link to="/about" />
+        <FormButton label="Link" is-link to="/about" disabled />
+      </div>
+    </PreviewItem>
   </div>
 </template>
 
