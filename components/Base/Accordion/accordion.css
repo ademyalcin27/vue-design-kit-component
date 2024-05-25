@@ -1,0 +1,36 @@
+.accordion-wrapper {
+  @apply divide-y border border-c-border bg-white p-4 shadow-md;
+}
+
+.accordion-item {
+  @apply flex w-full flex-col p-2;
+
+  &__title {
+    @apply flex w-full items-center font-semibold;
+    &:disabled {
+      @apply opacity-50;
+    }
+  }
+  &__icon {
+    @apply ml-auto;
+  }
+  .accordion-item__description-enter-from,
+  .accordion-item__description-leave-to {
+    max-height: 0;
+  }
+
+  .accordion-item__description-enter-to,
+  .accordion-item__description-leave-from {
+    max-height: 1000px;
+  }
+
+  .accordion-item__description-leave-active {
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+  }
+
+  .accordion-item__description-enter-active {
+    overflow: hidden;
+    transition: max-height 1s ease-in-out;
+  }
+}

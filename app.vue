@@ -16,6 +16,8 @@
     <PreviewToggle />
     <h2 class="wrapper__section-title">Radio Components</h2>
     <PreviewRadio />
+    <h2 class="wrapper__section-title">Accordion Components</h2>
+    <PreviewAccordion />
   </div>
 </template>
 <script setup lang="ts">
