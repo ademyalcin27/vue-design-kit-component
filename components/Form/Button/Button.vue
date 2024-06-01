@@ -37,7 +37,7 @@ interface ButtonProps {
   size?: "small" | "medium" | "large";
   color?: "primary" | "red";
   type?: "button" | "submit" | "reset";
-  variant?: "text" | "outline" | "contained";
+  variant?: "text" | "outlined" | "contained";
   prependIcon?: string;
   appendIcon?: string;
   disabled?: boolean;

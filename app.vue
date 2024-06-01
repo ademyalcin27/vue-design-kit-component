@@ -6,18 +6,7 @@
     >
       Theme Toggle
     </button>
-    <h2 class="wrapper__section-title">Button Components</h2>
-    <PreviewButton />
-    <h2 class="wrapper__section-title">Input Components</h2>
-    <PreviewInput />
-    <h2 class="wrapper__section-title">Checkbox Components</h2>
-    <PreviewCheckbox />
-    <h2 class="wrapper__section-title">Toggle Components</h2>
-    <PreviewToggle />
-    <h2 class="wrapper__section-title">Radio Components</h2>
-    <PreviewRadio />
-    <h2 class="wrapper__section-title">Accordion Components</h2>
-    <PreviewAccordion />
+    <NuxtPage />
   </div>
 </template>
 <script setup lang="ts">

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 basis-80">
+  <div class="my-5 flex-1">
     <h2 class="mb-2 text-base font-medium">{{ title }}</h2>
     <slot />
   </div>

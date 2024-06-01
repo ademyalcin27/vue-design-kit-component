@@ -1,0 +1,23 @@
+.table {
+  @apply w-full border-collapse shadow-md;
+  thead tr {
+    @apply bg-c-background text-left text-c-title;
+  }
+  th,
+  td {
+    @apply border border-c-border px-2 py-3 text-left;
+  }
+  tbody tr {
+    @apply border-b-2 border-c-border;
+  }
+  tbody tr:nth-of-type(even) {
+    @apply bg-c-muted;
+  }
+
+  tbody tr td:first-child {
+    @apply font-semibold;
+  }
+  th {
+    @apply bg-c-background text-sm text-c-foreground;
+  }
+}

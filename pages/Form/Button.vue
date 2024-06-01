@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap gap-2">
+  <PreviewPage :title="title" :description="description">
     <PreviewItem title="Normal Usage">
       <FormButton label="izle ve öğren" />
     </PreviewItem>
@@ -77,9 +77,126 @@
         <FormButton label="Link" is-link to="/about" disabled />
       </div>
     </PreviewItem>
-  </div>
+    <template #props>
+      <BaseTable :columns="columns" :data="propsData" />
+    </template>
+    <template #slots>
+      <BaseTable :columns="slotsColumns" :data="slotsData" />
+    </template>
+  </PreviewPage>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const title = "Button Component";
+const description = `The BaseButton component serves as a replacement for the standard HTML
+      button. It provides several built-in style presets and enables users to
+      manually adjust various attributes such as size, color, and opacity.`;
+const columns = [
+  { key: "name", label: "NAME" },
+  { key: "description", label: "DESCRIPTION" },
+  { key: "types", label: "TYPES" },
+  { key: "default", label: "DEFAULT" },
+];
+const propsData = [
+  {
+    name: "label",
+    description: "The text displayed on the button.",
+    types: "string",
+    default: "-",
+  },
+  {
+    name: "size",
+    description: "The size of the button.",
+    types: '"small" | "medium" | "large"',
+    default: '"medium"',
+  },
+  {
+    name: "color",
+    description: "The color of the button.",
+    types: '"primary" | "red"',
+    default: '"primary"',
+  },
+  {
+    name: "type",
+    description: "The type of the button.",
+    types: '"button" | "submit" | "reset"',
+    default: '"button"',
+  },
+  {
+    name: "variant",
+    description: "The style variant of the button.",
+    types: '"text" | "outlined" | "contained"',
+    default: '"contained"',
+  },
+  {
+    name: "prependIcon",
+    description: "The icon displayed before the label.",
+    types: "string",
+    default: "-",
+  },
+  {
+    name: "appendIcon",
+    description: "The icon displayed after the label.",
+    types: "string",
+    default: "-",
+  },
+  {
+    name: "disabled",
+    description: "Disables the button if `true`.",
+    types: "boolean",
+    default: "false",
+  },
+  {
+    name: "loading",
+    description: "Shows a loading state if `true`.",
+    types: "boolean",
+    default: "false",
+  },
+  {
+    name: "isLink",
+    description: "Renders the button as a link if `true`.",
+    types: "boolean",
+    default: "-",
+  },
+  {
+    name: "to",
+    description: "The target URL if the button is a link.",
+    types: "string",
+    default: "-",
+  },
+  {
+    name: "external",
+    description: "Opens the link in a new tab if `true`.",
+    types: "boolean",
+    default: "false",
+  },
+  {
+    name: "target",
+    description: "The target attribute for the link.",
+    types: 'NuxtLinkProps["target"]',
+    default: "-",
+  },
+];
+
+const slotsColumns = [
+  { key: "name", label: "NAME" },
+  { key: "description", label: "DESCRIPTION" },
+];
+const slotsData = [
+  {
+    name: "prependIcon",
+    description: "Slot to insert content before the button's main content.",
+  },
+  {
+    name: "default",
+    description:
+      "Default slot for the button's main content, typically the label.",
+  },
+  {
+    name: "appendIcon",
+    description: "Slot to insert content after the button's main content.",
+  },
+];
+</script>
 
 <style scoped></style>
