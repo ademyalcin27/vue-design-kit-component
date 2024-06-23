@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@fortawesome/vue-fontawesome": "^3.0.6",
+    "@vueuse/components": "^10.11.0",
     "nuxt": "^3.10.1",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"

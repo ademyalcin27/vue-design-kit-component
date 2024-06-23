@@ -1,0 +1,19 @@
+.sidebar-wrapper {
+  @apply fixed top-0 z-20 h-full transform bg-c-title-foreground/90 transition-all duration-300;
+
+  &__close-button {
+    @apply absolute right-2 top-2;
+  }
+  &--left {
+    @apply left-0;
+  }
+  &--right {
+    @apply right-0;
+  }
+  &--hide:is(&--left) {
+    @apply -translate-x-full;
+  }
+  &--hide:is(&--right) {
+    @apply translate-x-full;
+  }
+}

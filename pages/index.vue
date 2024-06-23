@@ -16,6 +16,7 @@ const links = [
   { name: "Radio Component", path: "/form/radio" },
   { name: "Input Component", path: "/form/input" },
   { name: "Accordion Component", path: "/base/accordion" },
+  { name: "Sidebar Component", path: "/base/sidebar" },
 ];
 </script>
 

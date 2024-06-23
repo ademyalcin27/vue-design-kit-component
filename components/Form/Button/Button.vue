@@ -7,6 +7,7 @@
       `button-wrapper--${size}`,
       `button-wrapper--${color}`,
       `button-wrapper--${variant}`,
+      { 'button-wrapper--rounded': rounded },
     ]"
     @click="handleClick"
   >
@@ -46,6 +47,7 @@ interface ButtonProps {
   to?: string;
   external?: boolean;
   target?: NuxtLinkProps["target"];
+  rounded?: boolean;
 }
 const props = withDefaults(defineProps<ButtonProps>(), {
   size: "medium",
