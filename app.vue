@@ -7,11 +7,86 @@
       Theme Toggle
     </button>
     <NuxtPage />
+    <BaseSidebar v-model="toggleSidebar">
+      <BaseSidebarItem :items="menuItems" />
+    </BaseSidebar>
   </div>
 </template>
 <script setup lang="ts">
-const { toggleTheme, initTheme } = useTheme();
+import type { SidebarItem } from "~/components/Base/Sidebar/SidebarItem.type";
 
+const { toggleTheme, initTheme } = useTheme();
+const toggleSidebar = ref(true);
+
+const menuItems = ref<SidebarItem[]>([
+  {
+    icon: "fa-home",
+    text: "Home",
+    link: "/",
+    active: false,
+  },
+  {
+    icon: "fa-cog",
+    text: "Form Components",
+    children: [
+      {
+        icon: "fa-circle",
+        text: "Button Component",
+        link: "/form/button",
+        active: false,
+        iconSize: "xs",
+      },
+      {
+        icon: "fa-circle",
+        text: "Toggle Component",
+        link: "/form/toggle",
+        active: false,
+        iconSize: "xs",
+      },
+      {
+        icon: "fa-circle",
+        text: "Checkbox Component",
+        link: "/form/checkbox",
+        active: false,
+        iconSize: "xs",
+      },
+      {
+        icon: "fa-circle",
+        text: "Radio Component",
+        link: "/form/radio",
+        active: false,
+        iconSize: "xs",
+      },
+      {
+        icon: "fa-circle",
+        text: "Input Component",
+        link: "/form/input",
+        active: false,
+        iconSize: "xs",
+      },
+    ],
+  },
+  {
+    icon: "fa-cog",
+    text: "Base Components",
+    children: [
+      {
+        icon: "fa-circle",
+        text: "Accordion Component",
+        link: "/base/accordion",
+        active: false,
+        iconSize: "xs",
+      },
+      {
+        icon: "fa-circle",
+        text: "Sidebar Component",
+        link: "/base/sidebar",
+        active: false,
+        iconSize: "xs",
+      },
+    ],
+  },
+]);
 onMounted(() => {
   initTheme();
 });

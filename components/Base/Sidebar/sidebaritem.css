@@ -1,0 +1,21 @@
+.menu {
+  @apply m-0 mb-4 list-none p-0;
+  &__item {
+    @apply my-2 flex cursor-pointer flex-col px-2 pl-0;
+    &-content {
+      @apply flex items-center;
+    }
+  }
+  &__icon {
+    @apply text-c-foreground;
+  }
+  &__link {
+    @apply ml-2 flex items-center gap-2 whitespace-nowrap text-sm text-c-foreground no-underline;
+    &--active {
+      @apply text-c-primary;
+    }
+  }
+  &__toggle-icon {
+    @apply ml-auto;
+  }
+}
