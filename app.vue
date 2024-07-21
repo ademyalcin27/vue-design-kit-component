@@ -7,8 +7,12 @@
       Theme Toggle
     </button>
     <NuxtPage />
-    <BaseSidebar v-model="toggleSidebar">
-      <BaseSidebarItem :items="menuItems" />
+    <BaseSidebar v-slot="slotProps" v-model="toggleSidebar">
+      <BaseSidebarItem
+        :items="menuItems"
+        :extended="slotProps.extended"
+        @toggle="toggleSidebar = true"
+      />
     </BaseSidebar>
   </div>
 </template>
@@ -17,6 +21,7 @@ import type { SidebarItem } from "~/components/Base/Sidebar/SidebarItem.type";
 
 const { toggleTheme, initTheme } = useTheme();
 const toggleSidebar = ref(true);
+const route = useRoute();
 
 const menuItems = ref<SidebarItem[]>([
   {
@@ -87,6 +92,40 @@ const menuItems = ref<SidebarItem[]>([
     ],
   },
 ]);
+
+function updateActiveState(items: SidebarItem[], path: string) {
+  let anyChildActive = false;
+  items.forEach((item) => {
+    item.active = item.link === path;
+    if (item.children) {
+      const childActive = updateActiveState(item.children, path);
+      item.active = item.active || childActive;
+      anyChildActive = anyChildActive || childActive;
+    } else {
+      anyChildActive = anyChildActive || item.active;
+    }
+  });
+  return anyChildActive;
+}
+
+function collapseAllMenu(items: SidebarItem[]) {
+  items.forEach((item) => {
+    if (item.children) {
+      item.isOpen = false;
+      collapseAllMenu(item?.children);
+    }
+  });
+}
+
+watchEffect(() => {
+  updateActiveState(menuItems.value, route.path);
+});
+
+watchEffect(() => {
+  if (!toggleSidebar.value) {
+    collapseAllMenu(menuItems.value);
+  }
+});
 onMounted(() => {
   initTheme();
 });

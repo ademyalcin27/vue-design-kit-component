@@ -24,6 +24,12 @@ export default {
         "c-ring": "hsl(var(--color-ring) / <alpha-value>)",
         "c-radius": "hsl(var(--color-radius) / <alpha-value>)",
       },
+      boxShadow: {
+        "lg-dark":
+          "0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -1px rgba(0, 0, 0, 0.4)", // dark theme shadow
+        "lg-light":
+          "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)", // light theme shadow
+      },
     },
   },
   plugins: [],

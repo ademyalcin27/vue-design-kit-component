@@ -4,32 +4,34 @@
       v-for="(item, index) in items"
       :key="index"
       class="menu__item"
-      @click="toggle(item)"
+      @click.stop="toggle(item)"
     >
       <div class="menu__item-content">
         <NuxtLink
           :to="item.link"
           :external="item.external"
           class="menu__link"
-          :class="{ 'menu__link--active': item.isOpen }"
+          :class="{ 'menu__link--active': item.isOpen || item.active }"
         >
           <font-awesome-icon
             :icon="item.icon"
             class="menu__icon"
             :size="item.iconSize"
           />
-          {{ item.text }}
+          <template v-if="extended">{{ item.text }}</template>
         </NuxtLink>
         <font-awesome-icon
+          v-if="hasChildren(item) && extended"
           :icon="item.isOpen ? 'fa-chevron-up' : 'fa-chevron-down'"
           class="menu__toggle-icon"
           size="md"
         />
       </div>
       <BaseSidebarItem
-        v-if="item.isOpen && hasChildren(item)"
+        v-if="item.isOpen && hasChildren(item) && item.children"
         :items="item.children"
         class="menu__sub-menu"
+        :extended="extended"
       />
     </li>
   </ul>
@@ -38,11 +40,11 @@
 <script setup lang="ts">
 import type { SidebarItem } from "./SidebarItem.type";
 
-defineProps<{ items: SidebarItem[] }>();
+defineProps<{ items: SidebarItem[]; extended: boolean }>();
 const emit = defineEmits(["toggle"]);
 
 function hasChildren(item: SidebarItem) {
-  return item.children && item.children.length > 0;
+  return !!item.children && item.children.length > 0;
 }
 
 function toggle(item: SidebarItem) {
@@ -56,4 +58,3 @@ function toggle(item: SidebarItem) {
 <style scoped>
 @import url("./sidebaritem.css");
 </style>
-./SidebarItem.type.js

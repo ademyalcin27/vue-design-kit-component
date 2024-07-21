@@ -11,7 +11,7 @@
       class="sidebar-wrapper__close-button"
       @click="toggleSidebar"
     />
-    <slot />
+    <slot :extended="modelValue" />
   </div>
 </template>
 
@@ -54,7 +54,10 @@ const sidebarClass = computed(() => {
 });
 
 function handleOutsideClick() {
-  if (props.outsideClick) {
+  if (
+    props.outsideClick &&
+    windowWidth.value < (props.collapsebleQuery as number)
+  ) {
     modelValue.value = false;
   }
 }
