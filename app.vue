@@ -1,12 +1,15 @@
 <template>
-  <div class="wrapper">
-    <button
-      class="w-max justify-center rounded-md bg-c-primary p-2 text-c-primary-foreground"
-      @click="toggleTheme"
-    >
-      Theme Toggle
-    </button>
-    <NuxtPage />
+  <div class="wrapper" :class="{ 'wrapper__content--expanded': toggleSidebar }">
+    <div class="wrapper__content">
+      <button
+        class="w-max justify-center rounded-md bg-c-primary p-2 text-c-primary-foreground"
+        @click="toggleTheme"
+      >
+        Theme Toggle
+      </button>
+
+      <NuxtPage />
+    </div>
     <BaseSidebar v-slot="slotProps" v-model="toggleSidebar">
       <BaseSidebarItem
         :items="menuItems"
@@ -132,9 +135,16 @@ onMounted(() => {
 </script>
 <style scoped>
 .wrapper {
-  @apply flex flex-col p-5;
+  --sidebar-width: 16rem;
+  @apply flex flex-col  pl-16 lg:pl-[var(--sidebar-width)];
   &__section-title {
     @apply mb-4 text-2xl font-semibold text-c-primary;
+  }
+  &__content {
+    @apply p-4;
+  }
+  &--expanded {
+    --sidebar-width: 16rem;
   }
 }
 </style>

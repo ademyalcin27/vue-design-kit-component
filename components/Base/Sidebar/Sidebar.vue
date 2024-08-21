@@ -5,6 +5,7 @@
     :class="sidebarClass"
   >
     <FormButton
+      v-if="windowWidth < (props.collapsebleQuery as number)"
       prepend-icon="angle-right"
       rounded
       size="small"
@@ -30,7 +31,7 @@ interface SidebarProps {
 const props = withDefaults(defineProps<SidebarProps>(), {
   smallSize: "w-16",
   bigSize: "w-64",
-  collapsebleQuery: 1144,
+  collapsebleQuery: 1024,
   outsideClick: true,
   direction: "left",
 });
