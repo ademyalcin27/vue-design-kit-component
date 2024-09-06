@@ -87,6 +87,13 @@ const menuItems = ref<SidebarItem[]>([
       },
       {
         icon: "fa-circle",
+        text: "Alert Component",
+        link: "/base/alert",
+        active: false,
+        iconSize: "xs",
+      },
+      {
+        icon: "fa-circle",
         text: "Sidebar Component",
         link: "/base/sidebar",
         active: false,
